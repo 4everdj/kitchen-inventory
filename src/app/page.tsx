@@ -10,7 +10,6 @@ export default function HomePage() {
   const {
     userId,
     userName,
-    login,
     getItemsByStatus,
     getActiveItems,
     households,
@@ -23,12 +22,6 @@ export default function HomePage() {
     setMounted(true);
   }, []);
 
-  // Auto-login demo user for prototype
-  useEffect(() => {
-    if (mounted && !userId) {
-      login('You');
-    }
-  }, [mounted, userId, login]);
 
   if (!mounted) {
     return (

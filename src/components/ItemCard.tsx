@@ -29,7 +29,7 @@ interface ItemCardProps {
 }
 
 export function ItemCard({ item, compact = false, onEdit }: ItemCardProps) {
-  const { setItemStatus, markPurchased, deleteItem, getCategoryById } = useStore();
+const { setItemStatus, deleteItem, getCategoryById } = useStore();
   const [menuOpen, setMenuOpen] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState(false);
 
@@ -158,7 +158,7 @@ export function ItemCard({ item, compact = false, onEdit }: ItemCardProps) {
         )}
         {item.status !== 'available' && (
           <button
-            onClick={() => markPurchased(item.id)}
+            onClick={() => setItemStatus(item.id, 'available')}
             className="flex-1 flex items-center justify-center gap-1.5 py-2.5 text-xs font-medium text-green-600 hover:bg-green-50 transition-colors"
           >
             <Check className="w-3.5 h-3.5" />

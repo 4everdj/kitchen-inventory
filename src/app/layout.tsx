@@ -2,6 +2,9 @@ import type { Metadata, Viewport } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { BottomNav } from '@/components/BottomNav';
+import { RealtimeSync } from '@/components/RealtimeSync';
+import { AuthSync } from '@/components/AuthSync';
+import { ServiceWorkerRegistration } from '@/components/ServiceWorkerRegistration';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -39,10 +42,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full`}>
-      <body className="min-h-full flex flex-col bg-slate-50 text-slate-900 antialiased">
-        <main className="flex-1 pb-20 max-w-lg mx-auto w-full">{children}</main>
-        <BottomNav />
-      </body>
+<body className="min-h-full flex flex-col bg-slate-50 text-slate-900 antialiased">
+<AuthSync />
+<RealtimeSync />
+<ServiceWorkerRegistration />
+
+  <main className="flex-1 pb-20 max-w-lg mx-auto w-full">
+    {children}
+  </main>
+
+  <BottomNav />
+</body>
     </html>
   );
 }
